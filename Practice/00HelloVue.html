@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Hello {{vue}}</h1>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script>
+        new Vue({               // Vue 인스턴스를 생성한다.
+            el: '#app',         // HTML 엘리먼트를 지정한다.
+            data: {             // 인스턴스 상에서 사용 될 데이터 프로퍼티
+                vue: 'VueJS'
+            },
+        })
+    </script>
+</body>
+
+</html>

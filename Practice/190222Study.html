@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>190222Study</title>
+  </head>
+
+  <body>
+    <h1>템플릿문법</h1>
+    <div id="app-1">
+      <h3>원시 html</h3>
+      <div>{{ html }}</div>
+      <div v-html="document"></div>
+      <!-- html bind는 v-html을 통해서 가능하다 -->
+      <span>{{ warning }}</span>
+    </div>
+
+    <div id="app-2">
+      <h3>속성</h3>
+      <div v-bind:id="id">{{ content }}</div>
+      <div v-if="true">잘 보이나요? v-if 로 속성을 사용 했습니다!</div>
+    </div>
+    <script>
+      var app1 = new Vue({
+        el: "#app-1",
+        data: {
+          document:
+            "<a href='https://kr.vuejs.org/v2/guide/syntax.html#%EC%9B%90%EC%8B%9C-HTML'>공식문서<a/>",
+          html: "<h1>html 테스트</h1>",
+          warning: "v-html은 xss 취약점으로 발생할 수 있으니 조심히 써야함!"
+        }
+      });
+
+      var app2 = new Vue({
+        el: "#app-2",
+        data: {
+          id: "idTest",
+          content: "V-bind는 다양하게 사용 가능하다! ID를 바인딩 했다!",
+          seen: false
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        <table>
+            <tr>
+                <th>번호</th>
+                <th>이름</th>
+                <th>나이</th>
+            </tr>
+
+            <table-body v-for="content in contents" v-bind:body="content"></table-body>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        Vue.component('table-body', {
+            props: ['body'],
+            template: '<tr><td>{{body.no}}</td><td>{{body.name}}</td><td>{{body.age}}</td></tr>'
+        })
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                contents: [{
+                    no: 1,
+                    name: '홍길동',
+                    age: '10'
+                }, {
+                    no: 2,
+                    name: '임꺽정',
+                    age: '11'
+                }, {
+                    no: 3,
+                    name: '유관순',
+                    age: '10'
+                }]
+            }
+        })
+    </script>
+</body>
+
+</html>

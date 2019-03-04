@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <div id="example">
+        <p>원본 : {{ message }}</p>
+        <p>역순 : {{ reverseMessage }}</p>
+        <p>함수 : {{ methodMessage() }}</p>
+    </div>
+
+    <div id="demo">
+        <p>{{ FullName }}</p>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#example',
+            data: {
+                message: '안녕하세요~'
+            },
+            computed: {
+                // 저장(캐싱)하기 때문에 message가 변하지 않는 이상 저장(캐싱)된 값을 보여준다.
+                reverseMessage: function () {
+                    return this.message.split('').reverse().join('')
+                }
+            },
+            methods: {
+                // compute하고는 다르게 매번 실행된다.
+                methodMessage: function () {
+                    return this.message + '메소드입니다.'
+                }
+            }
+        })
+
+        var vm2 = new Vue({
+            el: '#demo',
+            data: {
+                firstname: 'Foo',
+                lastName: 'Bar'
+            },
+            computed: {
+                FullName: {
+                    //computed 속성은 기본적으로 getter 함수만 가지고 있지만, 필요한 경우 setter 함수를 만들어 쓸수 있다.
+                    get: function () {
+                        return this.firstname + ' ' + this.lastName;
+                    },
+                    set: function (newVal) {
+                        var names = newVal.split(' ')
+                        this.firstname = names[0]
+                        this.lastName = names[names.length - 1]
+                    }
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
